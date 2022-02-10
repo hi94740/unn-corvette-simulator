@@ -1,0 +1,312 @@
+#radar-panel {
+  overflow: hidden;
+}
+
+.ship-dot-size {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+}
+
+#unn-corvette {
+  border-radius: 50%;
+  background: var(--theme-color);
+  position: relative;
+  left: -66px;
+}
+
+#unn-corvette-label {
+  text-align: right;
+  float: left;
+  position: relative;
+  left: -90px;
+  top: -29px;
+}
+
+span.unn {
+  font-family: "Orbitron", sans-serif;
+  font-weight: 700;
+}
+
+.radar-circle {
+  --size: 0px;
+  width: var(--size);
+  height: var(--size);
+  margin-top: calc(50% - 2px - var(--size) / 2);
+  margin-left: calc(50% - 2px - var(--size) / 2);
+  border-radius: 50%;
+  border: 2px solid var(--faded-theme-color);
+}
+
+.jamming-range {
+  border: 2px solid rgba(0, 0, 0, 0);
+  transition: 0.2s;
+}
+
+#unn-corvette .jamming-range.activated {
+  --size: 350px;
+  background: rgba(76, 217, 100, 0.12);
+  border: 2px solid rgb(76, 217, 100);
+}
+
+.radar-space {
+  width: 200px;
+}
+
+#radar-space-1 {
+  z-index: 2;
+}
+
+#radar-space-2 {
+  z-index: 3;
+  position: relative;
+  left: 196px;
+}
+
+#radar-space-3 {
+  z-index: 5;
+  width: 0px;
+}
+
+#radar-space-4 {
+  z-index: 4;
+  width: 0px;
+  position: relative;
+  left: 1px;
+}
+
+#radar-space-4 .radar-circle {
+  visibility: hidden;
+  transition-timing-function: ease-out;
+  border: 3px solid var(--red);
+}
+
+#hostile-corvette {
+  border-radius: 50%;
+  background: var(--red);
+  z-index: 1;
+  transform: scale(0);
+}
+
+@keyframes popup {
+  60% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+#hostile-corvette-container.show #hostile-corvette {
+  animation-name: popup;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-delay: 1.5s;
+}
+
+#hostile-corvette-label {
+  color: var(--red);
+  float: left;
+  position: relative;
+  left: 36px;
+  top: -54px;
+  opacity: 0;
+  transition: 0.2s;
+  transition-delay: 0.2s;
+}
+
+#hostile-corvette-container.show #hostile-corvette-label {
+  opacity: 1;
+  transition-delay: 1.7s;
+}
+
+#hostile-corvette .jamming-range.activated {
+  --size: 350px;
+  background: rgba(255, 204, 0, 0.13);
+  border: 2px solid var(--yellow);
+}
+
+#hostile-corvette .annotation {
+  margin-top: -114px;
+  margin-left: 10px;
+  float: left;
+}
+
+#hostile-corvette .missile-dot {
+  visibility: hidden;
+}
+
+#hostile-corvette-container.show-debris #hostile-corvette {
+  background: none;
+  transform: none;
+}
+
+#hostile-corvette-container.show-debris .radar-circle {
+  --size: 500px;
+  transition-property: width, height, margin;
+  transition-duration: 10s;
+  transition-timing-function: ease-out;
+  border: 3px solid var(--red);
+  position: relative;
+  left: -1px;
+}
+
+#hostile-corvette-container.show-debris .missile-dot {
+  visibility: visible;
+}
+
+.annotation {
+  --color: var(--theme-color);
+  --width: 220px;
+  transition-timing-function: ease-in;
+}
+
+.annotation.warning {
+  --color: var(--yellow);
+}
+
+.annotation.target-locked {
+  --color: var(--red);
+  --text: "TARGET LOCKED";
+  --width: 150px;
+}
+
+.annotation.debris-field {
+  --text: "DEBRIS FIELD";
+  --width: 185px;
+}
+
+.annotation.railgun-charging {
+  --text: "RAILGUN CHARGING";
+  --width: 220px;
+}
+
+.annotation.jamming-signal {
+  --text: "JAMMING SIGNAL";
+  --width: 200px;
+}
+
+.annotation.incoming-missile {
+  --text: "INCOMING MISSILE"
+}
+
+.annotation.missile-link-ok {
+  --width: 185px;
+}
+.annotation.missile-link-err {
+  --width: 230px;
+}
+
+.annotation.missile-link-ok p.ok,
+.annotation.missile-link-err p.err {
+  display: unset;
+}
+
+.annotation p.ok,
+.annotation p.err {
+  display: none;
+}
+
+.annotation-content {
+  margin-left: calc(0px - var(--width) / 2);
+  width: var(--width);
+  height: 40px;
+  border: 2px solid var(--color);
+  transform: scaleX(0);
+  transition-duration: 0.2s;
+  transition-property: transform;
+}
+
+.annotation-content p::after {
+  content: var(--text);
+}
+
+.annotation-line {
+  width: 2px;
+  height: 70px;
+  background: var(--color);
+  margin-left: 1px;
+  transform: scaleY(0) translateY(100%);
+  transition-duration: 0.2s;
+  transition-delay: 0.2s;
+  transition-property: transform;
+}
+
+.annotation img {
+  width: 0px;
+  margin: 0px;
+  transition: 0.2s;
+}
+
+@keyframes warning-blink {
+  15% {
+    opacity: 0%;
+  }
+  30% {
+    opacity: 100%;
+  }
+}
+
+.annotation.warning img {
+  width: auto;
+  margin-left: -9px;
+  margin-right: -9px;
+  animation-name: warning-blink;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+}
+
+.annotation-content div {
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+}
+
+.annotation.warning .annotation-content div {
+  border-left: 2px solid var(--color);
+}
+
+.annotation-content p {
+  color: var(--color);
+  font-weight: 700;
+}
+
+.missile-dot {
+  border-radius: 50%;
+  background: var(--color);
+  width: 10px;
+  height: 10px;
+  margin-left: -3px;
+  margin-top: -1px;
+  transform: scale(0);
+  transition-duration: 0.1s;
+  transition-delay: 0.4s;
+}
+
+.annotation.show .missile-dot,
+.annotation.show .annotation-line,
+.annotation.show .annotation-content {
+  transform: none;
+}
+
+.annotation.show .missile-dot {
+  transition-delay: 0s;
+}
+
+.annotation.show .annotation-line {
+  transition-delay: 0.1s;
+}
+
+.annotation.show .annotation-content {
+  transition: all 0.2s, transform 0.2s ease-in-out 0.3s;
+}
+
+.radar-space .annotation-line,
+#hostile-corvette-container.show-debris .annotation-line {
+  height: 78px;
+}
+
+.radar-space .annotation {
+  margin-top: -121px;
+}

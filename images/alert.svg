@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="58px" height="58px" viewBox="0 0 58 58" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>矩形备份 10</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="矩形备份-10" fill-opacity="0.66" fill="#FFCC00" x="0" y="0" width="58" height="58"></rect>
+        <g id="alert备份" transform="translate(10.000000, 10.000000)">
+            <polygon id="三角形" fill="#000000" points="19 0 38 38 0 38"></polygon>
+            <path d="M20.518,32 L17.636,32 L17.636,29.118 L20.518,29.118 L20.518,32 Z M17.636,27.666 L17.636,16.16 L20.518,16.16 L20.518,27.666 L17.636,27.666 Z" id="!" fill="#FFCC00" fill-rule="nonzero"></path>
+        </g>
+    </g>
+</svg>

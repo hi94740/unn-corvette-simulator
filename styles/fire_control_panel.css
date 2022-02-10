@@ -1,0 +1,275 @@
+#fire-control-panel-container {
+  width: 480px;
+  overflow: hidden;
+}
+
+#weapons-container {
+  width: 0px;
+  height: 100%;
+  opacity: 0;
+  transition: 0.5s;
+  /* transition-delay: 2s; */
+}
+
+#weapons-container.show {
+  width: 230px;
+  opacity: 1;
+}
+
+/* Battery */
+
+#battery-container {
+  --color: var(--theme-color);
+}
+
+#battery-container * {
+  transition: 0.15s;
+}
+
+#battery-container p {
+  min-width: 167px;
+  color: var(--color);
+}
+
+#battery-icon-container {
+  margin-left: 10px;
+}
+
+#battery-icon-part1 {
+  background: var(--color);
+  width: 2.5px;
+  height: 10px;
+}
+
+#battery-icon-part2 {
+  border: 2px solid var(--color);
+  border-radius: 6px;
+  width: 46px;
+  height: 22px;
+}
+
+#remaining-battery-container {
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+#remaining-battery {
+  --progress-time: 0s;
+  width: 100%;
+  height: 100%;
+  background: var(--color);
+  transition: all 0.15s, width var(--progress-time) linear;
+}
+
+/* Weapons */
+
+#railgun {
+  --extented-line-length: 72px;
+}
+
+#missile {
+  margin-top: 58px;
+  --extented-line-length: 59px;
+}
+
+#jammer {
+  margin-top: 15px;
+  --extented-line-length: 90px;
+}
+
+.extented-line {
+  border-top: var(--border2px);
+  position: relative;
+  width: var(--extented-line-length);
+  left: calc(0px - var(--extented-line-length));
+  box-shadow: -2px 0px 2px 0px black;
+}
+
+.weapon-item-container {
+  background: rgba(0, 0, 0, 0.6);
+  margin-top: -2px;
+  width: 233px;
+  height: 104px;
+  border: var(--border2px);
+  display: flex;
+}
+
+.weapon-image-container {
+  border-right: var(--border2px);
+  width: 96px;
+  min-width: 96px;
+  height: 100%;
+}
+
+.weapon-title {
+  background: var(--faded-theme-color);
+  border-bottom: var(--border2px);
+  width: 100%;
+  height: 24px;
+  color: black;
+}
+
+h3 {
+  font-size: 16px;
+}
+
+.weapon-content-area {
+  width: 100%;
+}
+
+.weapon-content-area p {
+  margin: 0px;
+  padding: 0px 5px;
+  align-self: start;
+}
+
+.weapon-status {
+  height: 78px;
+}
+
+.weapon-description {
+  height: 0px;
+}
+
+.weapon-status,
+.weapon-description {
+  overflow: hidden;
+  transition: height 0.25s;
+}
+
+/* Weapon Status */
+
+button {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border-radius: 0;
+  background-color: transparent;
+  font: inherit;
+  line-height: inherit;
+  width: max-content;
+}
+
+button:after {
+  border: none;
+}
+
+button:enabled {
+  cursor: pointer;
+}
+
+button:enabled:active {
+  opacity: 0.5;
+}
+
+button * {
+  pointer-events: none;
+}
+
+.weapon-status-indicator {
+  --outer-width: 120px;
+  --outer-height: 30px;
+  --border-width: 2px;
+  --width: calc(var(--outer-width) - var(--border-width) * 2);
+  --height: calc(var(--outer-height) - var(--border-width) * 2);
+  max-width: var(--outer-width);
+  height: var(--outer-height);
+  margin-bottom: 10px;
+  border: var(--border-width) solid var(--color);
+  box-sizing: border-box;
+  border-radius: 6px;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+.weapon-status-indicator,
+.weapon-status-indicator * {
+  transition-property: background, border;
+  transition-duration: 0.5s;
+}
+
+.weapon-status-indicator-size {
+  width: var(--width);
+  height: var(--height);
+}
+
+.weapon-item {
+  --status-text: "STATUS:";
+  --caption: "STANDBY";
+  --progress: 0%;
+  --font-family: unset;
+  --font-weight: unset;
+  --color: var(--theme-color);
+}
+
+.weapon-item.standby .weapon-status:hover {
+  --status-text: "ACTION:";
+  --caption: "DEPLOY";
+  --font-family: "Orbitron", sans-serif;
+  --font-weight: 600;
+}
+
+.weapon-item.unavailable {
+  --caption: "UNAVAILABLE";
+  --color: #4c6279;
+  --progress: 100%;
+  --progress-time: 0.5s;
+}
+
+.status-text::after {
+  content: var(--status-text);
+}
+
+.weapon-status-caption::after {
+  content: var(--caption);
+}
+
+.weapon-status-caption {
+  color: var(--color);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight);
+  padding-bottom: 1px;
+}
+
+.weapon-item.blink3 .weapon-status-caption {
+  animation-name: blink;
+  animation-duration: 1s;
+  animation-iteration-count: 3;
+}
+
+.weapon-deployment-progress {
+  height: var(--height);
+  margin-top: calc(0px - var(--height));
+  width: var(--progress);
+  background-color: var(--color);
+  overflow: hidden;
+  transition: width var(--progress-time), background 0.5s;
+}
+
+.weapon-deployment-progress .weapon-status-caption {
+  color: black;
+}
+
+/* Weapon Description */
+
+.weapon-description p {
+  font-size: 12px;
+  padding-top: 4px;
+}
+
+/* Images */
+
+img[alt="ship_outline"] {
+  height: 484px;
+}
+
+img[alt="railgun"],
+img[alt="jammer"] {
+  width: 80px;
+}
+
+img[alt="missile"] {
+  height: 90px;
+}

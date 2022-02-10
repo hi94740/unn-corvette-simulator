@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UNN Corvette Simulator</title>
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="styles/fire_control_panel.css" />
+    <link rel="stylesheet" href="styles/radar_panel.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main>
+      <header class="flex">
+        <h1><b>UNN</b> CORVETTE SIMULATOR</h1>
+        <div class="flex-grow"></div>
+        <div id="timer" class="weapon-status-indicator">
+          <div class="weapon-status-indicator-size flex-center">
+            <div class="weapon-status-caption"></div>
+          </div>
+          <div class="weapon-deployment-progress">
+            <div class="weapon-status-indicator-size flex-center">
+              <div class="weapon-status-caption"></div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div id="divider1"></div>
+      <div id="main-container" class="flex">
+        <section id="fire-control-panel-container" class="flex-col">
+          <h2>FIRE CONTROL</h2>
+          <div class="divider3"></div>
+          <div
+            id="fire-control-panel"
+            class="fill-container flex-grow flex-center"
+          >
+            <img src="images/ship_outline.svg" alt="ship_outline" />
+            <div id="weapons-container">
+              <div id="battery-container" class="flex-end">
+                <p>AUXILIARY BATTERY</p>
+                <div id="battery-icon-container" class="flex-center">
+                  <div id="battery-icon-part1"></div>
+                  <div id="battery-icon-part2" class="flex-center">
+                    <div id="remaining-battery-container" class="flex-end">
+                      <div id="remaining-battery"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="railgun" class="weapon-item standby">
+                <div class="extented-line"></div>
+                <div class="weapon-item-container">
+                  <div class="weapon-image-container flex-center">
+                    <img src="images/railgun.svg" alt="railgun" />
+                  </div>
+                  <div class="flex-grow flex-col">
+                    <div class="weapon-title flex-center">
+                      <h3>RAILGUN</h3>
+                    </div>
+                    <div class="weapon-content-area flex-grow">
+                      <div class="weapon-status fill-container flex-col">
+                        <p class="status-text"></p>
+                        <div class="fill-container flex-center">
+                          <button class="weapon-status-indicator">
+                            <div
+                              class="weapon-status-indicator-size flex-center"
+                            >
+                              <div class="weapon-status-caption"></div>
+                            </div>
+                            <div class="weapon-deployment-progress">
+                              <div
+                                class="weapon-status-indicator-size flex-center"
+                              >
+                                <div class="weapon-status-caption"></div>
+                              </div>
+                            </div>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="weapon-description fill-container">
+                        <p>
+                          <span class="green">Pro:</span>
+                          Not affected by jammers.
+                          <br />
+                          <span class="red">Con:</span>
+                          Longest charging time.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="missile" class="weapon-item standby">
+                <div class="extented-line"></div>
+                <div class="weapon-item-container">
+                  <div class="weapon-image-container flex-center">
+                    <img src="images/missile.svg" alt="missile" />
+                  </div>
+                  <div class="flex-grow flex-col">
+                    <div class="weapon-title flex-center">
+                      <h3>MISSILE BAY</h3>
+                    </div>
+                    <div class="weapon-content-area flex-grow">
+                      <div class="weapon-status fill-container flex-col">
+                        <p class="status-text"></p>
+                        <div class="fill-container flex-center">
+                          <button class="weapon-status-indicator">
+                            <div
+                              class="weapon-status-indicator-size flex-center"
+                            >
+                              <div class="weapon-status-caption"></div>
+                            </div>
+                            <div class="weapon-deployment-progress">
+                              <div
+                                class="weapon-status-indicator-size flex-center"
+                              >
+                                <div class="weapon-status-caption"></div>
+                              </div>
+                            </div>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="weapon-description fill-container">
+                        <p>
+                          <span class="green">Pro:</span>
+                          No charging time.
+                          <br />
+                          <span class="red">Con:</span>
+                          Vulnerable to jamming.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="jammer" class="weapon-item standby">
+                <div class="extented-line"></div>
+                <div class="weapon-item-container">
+                  <div class="weapon-image-container flex-center">
+                    <img src="images/jammer.svg" alt="jammer" />
+                  </div>
+                  <div class="flex-grow flex-col">
+                    <div class="weapon-title flex-center">
+                      <h3>JAMMER</h3>
+                    </div>
+                    <div class="weapon-content-area flex-grow">
+                      <div class="weapon-status fill-container flex-col">
+                        <p class="status-text"></p>
+                        <div class="fill-container flex-center">
+                          <button class="weapon-status-indicator">
+                            <div
+                              class="weapon-status-indicator-size flex-center"
+                            >
+                              <div class="weapon-status-caption"></div>
+                            </div>
+                            <div class="weapon-deployment-progress">
+                              <div
+                                class="weapon-status-indicator-size flex-center"
+                              >
+                                <div class="weapon-status-caption"></div>
+                              </div>
+                            </div>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="weapon-description fill-container">
+                        <p>
+                          <span class="green">Pro:</span>
+                          Missile guidence hacker.
+                          <br />
+                          <span class="red">Con:</span>
+                          No effect on other weapons.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div id="divider2"></div>
+        <section id="radar-panel-container" class="flex-grow flex-col">
+          <h2>RADAR</h2>
+          <div class="divider3"></div>
+          <div id="radar-panel" class="fill-container flex-grow flex-center">
+            <div class="ship-dot-size">
+              <p id="unn-corvette-label">
+                <span class="unn">UNN</span><br />
+                CORVETTE
+              </p>
+              <div class="flex-center">
+                <div id="unn-corvette" class="ship-dot-size">
+                  <div class="jamming-range radar-circle"></div>
+                </div>
+              </div>
+            </div>
+            <div class="radar-space" id="radar-space-1">
+              <div class="annotation">
+                <div class="annotation-content flex">
+                  <img src="images/alert.svg" alt="alert" />
+                  <div class="flex-grow flex-center">
+                    <p></p>
+                    <p class="ok">
+                      MISSILE: <span class="green">LINK OK</span>
+                    </p>
+                    <p class="err">
+                      MISSILE: <span class="red">LINK ERR</span>
+                    </p>
+                  </div>
+                </div>
+                <div class="annotation-line"></div>
+                <div class="missile-dot"></div>
+              </div>
+            </div>
+            <div id="radar-space-4" class="flex-center">
+              <div class="ship-dot-size">
+                <div class="radar-circle"></div>
+              </div>
+            </div>
+            <div class="radar-space" id="radar-space-3">
+              <div class="annotation debris-field warning">
+                <div class="annotation-content flex">
+                  <img src="images/alert.svg" alt="alert" />
+                  <div class="flex-grow flex-center">
+                    <p></p>
+                  </div>
+                </div>
+                <div class="annotation-line"></div>
+                <div class="missile-dot"></div>
+              </div>
+            </div>
+            <div class="radar-space" id="radar-space-2">
+              <div class="annotation incoming-missile warning">
+                <div class="annotation-content flex">
+                  <img src="images/alert.svg" alt="alert" />
+                  <div class="flex-grow flex-center">
+                    <p></p>
+                    <p class="ok">
+                      MISSILE: <span class="green">LINK OK</span>
+                    </p>
+                  </div>
+                </div>
+                <div class="annotation-line"></div>
+                <div class="missile-dot"></div>
+              </div>
+            </div>
+            <div id="hostile-corvette-container" class="ship-dot-size">
+              <div class="flex-center">
+                <div id="hostile-corvette" class="ship-dot-size">
+                  <div class="annotation">
+                    <div class="annotation-content flex">
+                      <img src="images/alert.svg" alt="alert" />
+                      <div class="flex-grow flex-center">
+                        <p></p>
+                      </div>
+                    </div>
+                    <div class="annotation-line"></div>
+                    <div class="missile-dot"></div>
+                  </div>
+                  <div class="jamming-range radar-circle"></div>
+                </div>
+              </div>
+              <p id="hostile-corvette-label">
+                HOSTILE<br />
+                CORVETTE
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <div id="popup-container" class="flex-center">
+      <div id="popup" class="show loading flex-col">
+        <h1></h1>
+        <p></p>
+        <ul>
+          <li>Move your mouse onto the weapon images to see descriptions</li>
+          <li>Deploy a weapon to start the simulation</li>
+          <li>The simulation will be terminated after 10 seconds</li>
+          <li>
+            The simulation will be terminated if your ship sustained critical
+            damage
+          </li>
+          <li><strong>Goal: Destroy the enemy ship</strong></li>
+        </ul>
+        <button class="ok">OK</button>
+        <button class="reload">RELOAD SIMULATION</button>
+      </div>
+    </div>
+    <script src="scripts/script.js"></script>
+  </body>
+</html>

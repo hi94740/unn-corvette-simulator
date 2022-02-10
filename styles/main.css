@@ -1,0 +1,229 @@
+* {
+  --theme-color: #007aff;
+  --faded-theme-color: rgba(0, 122, 255, 0.6);
+  --red: rgba(255, 58, 48, 0.75);
+  --yellow: rgb(255, 204, 0);
+  --border2px: 2px solid var(--theme-color);
+  -webkit-backface-visibility: hidden;
+}
+
+.fill-container {
+  width: 100%;
+  height: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-end {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+body {
+  background: #000 url("../images/background.jpg") no-repeat top/100%;
+  /* background: gray; */
+  margin: 0px;
+  color: var(--theme-color);
+  font-family: "Space Mono", monospace;
+}
+
+main {
+  background: rgba(0, 0, 0, 0.66);
+  width: 1280px;
+  height: 720px;
+  margin: calc((100vw * 1080 / 1920 - 720px) / 2) auto;
+  box-shadow: 0px 0px 20px 15px rgba(0, 122, 255, 0.35);
+  transform: scale(0);
+  transition: 0.25s linear;
+}
+
+main.show {
+  transform: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Orbitron", sans-serif;
+  margin: 0px;
+}
+
+header {
+  padding: 10px 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 32px;
+  font-weight: 500;
+  padding: 12px;
+}
+
+#timer {
+  --color: var(--theme-color);
+  --caption: "10.00";
+  margin: 0px;
+  --outer-height: 45px;
+  font-size: xx-large;
+  --border-width: 3px;
+  border-radius: 9px;
+}
+
+#divider1 {
+  background: var(--faded-theme-color);
+  width: 100%;
+  height: 16px;
+}
+
+#divider2 {
+  background: var(--faded-theme-color);
+  height: 623px;
+  width: 16px;
+}
+
+.divider3 {
+  background-color: var(--faded-theme-color);
+  height: 5px;
+  width: 100%;
+}
+
+/* Popup */
+
+#popup-container {
+  float: left;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: calc(100vw * 1080 / 1920);
+  pointer-events: none;
+  z-index: 10;
+}
+
+#popup {
+  --color: var(--theme-color);
+  background: rgba(0, 0, 0, 0.75);
+  border: 5px solid var(--color);
+  padding: 20px 30px;
+  transition: 0.1s linear;
+  transform: scale(0);
+  overflow: hidden;
+}
+
+#popup.show {
+  pointer-events: visible;
+  transform: none;
+}
+
+#popup ul {
+  display: none;
+}
+
+#popup button {
+  color: var(--color);
+  border: 2px solid var(--color);
+  box-sizing: border-box;
+  border-radius: 6px;
+  padding: 6px 10px;
+  min-width: 100px;
+  min-height: 30px;
+  display: none;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 700;
+}
+
+#popup h1,
+#popup p {
+  color: var(--color);
+}
+
+#popup h1::after {
+  content: var(--h1);
+}
+
+#popup p::after {
+  content: var(--p);
+}
+
+#popup.loading {
+  --h1: "LOADING SIMULATION...";
+  --p: "File Name: ONE_ON_ONE_BATTLE.sim";
+}
+
+#popup.load-complete {
+  --h1: "ONE_ON_ONE_BATTLE.sim";
+}
+
+#popup.load-complete p {
+  display: none;
+}
+
+#popup.tie {
+  --h1: "SIMULATION TERMINATED";
+  --p: "Error: ERR_TIMEOUT";
+  --color: var(--yellow);
+}
+
+#popup.win {
+  --h1: "SIMULATION COMPLETE";
+  --p: "Enemy ship destroyed";
+}
+
+#popup.lose {
+  --h1: "SIMULATION TERMINATED";
+  --p: "Error: SHIP_CRITICAL_DAMAGE";
+  --color: var(--red);
+}
+
+#popup.load-complete ul,
+#popup.load-complete button.ok,
+#popup.tie button.reload,
+#popup.win button.reload,
+#popup.lose button.reload {
+  display: unset;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+span.green {
+  color: #4cd964;
+}
+
+span.red {
+  color: #ff3b30;
+}
